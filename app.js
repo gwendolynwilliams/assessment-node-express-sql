@@ -2,10 +2,9 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var path = require('path');
-
+//var data = require('./routes/data');  //tried using this for data route
 
 var randomNumber = require('./routes/randomNumber');
-//var routes = require('./routes/routes');
 
 var pg = require('pg');
 var connectionString = '';
@@ -15,12 +14,12 @@ if(process.env.DATABASE_URL != undefined) {
     connectionString = 'postgres://localhost:5432/Gwen';
 }
 
-
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.set('port', process.env.PORT || 3000);
+
+//app.use('/data', data); //tried using this for data route - ended up leaving my data routes in this file
 
 app.post('/animals', function(req, res) {
 

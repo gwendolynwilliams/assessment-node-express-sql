@@ -1,7 +1,6 @@
 $(document).ready(function() {
     $('#submit').on('click', postCurrentAnimal);
     $('body').on('load', returnAllAnimals());
-    //$('#employee-container').on('click', '.delete-button', deletePerson);
 });
 
 function postCurrentAnimal() {
@@ -14,7 +13,7 @@ function postCurrentAnimal() {
 
     console.log(values);
 
-    $('#employeeForm').find('input[type=text]').val('');
+    $('#animalForm').find('input[type=text]').val('');
 
     $.ajax({
         type: 'POST',
@@ -53,6 +52,7 @@ function returnAllAnimals() {
         type: 'GET',
         url: '/animals',
         success: function(data) {
+            console.log(data);
 
             data.forEach(function(animal, i) {
                 var animalType = animal.animal_type;
